@@ -100,12 +100,17 @@ cmsDriver.py step1 --filein "file:"$FILETAG"-RunIISummer16DR80Premix-00008.root"
 
 cmsRun "$FILETAG"-RunIISummer16MiniAODv2-00061_1_cfg.py
 
+ls -ltr
+
 #####################################################################################
 # Copy the files over
 #####################################################################################
 # This directory has to already exist
-echo xrdcp $2 root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
-     xrdcp $2 root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
+echo xrdcp "$FILETAG".root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
+     xrdcp "$FILETAG".root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
+     xrdcp "$FILETAG"-RunIISummer16DR80Premix-00008_step1.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
+     xrdcp "$FILETAG"-RunIISummer16DR80Premix-00008.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
+     xrdcp "$FILETAG"-RunIISummer16MiniAODv2-00061.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
 
 #/eos/uscms/store/user/mbellis
 ### remove the output file if you don't want it automatically transferred when the job ends
