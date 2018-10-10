@@ -27,7 +27,9 @@ pythia8CommonSettingsBlock,
 pythia8CUEP8M1SettingsBlock,
 pythia8PowhegEmissionVetoSettingsBlock,
 processParameters = cms.vstring(
-        'POWHEG:nFinal = 3', ## Number of final state particles
+    # https://www.hep.ucl.ac.uk/twiki/pub/Main/StefanRichter/Meeting_with_Keith_2014-02-28.pdf
+    # Reference for nFinal
+        'POWHEG:nFinal = 2', ## Number of final state particles
         ## (BEFORE THE DECAYS) in the LHE
         ## other than emitted extra parton
         'TimeShower:mMaxGamma = 1.0',#cutting off lepton-pair production

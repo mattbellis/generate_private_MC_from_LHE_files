@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sh generate_signal_MC_from_LHE_files.sh $1
+sh run_the_cmsRun_commands.sh $1
