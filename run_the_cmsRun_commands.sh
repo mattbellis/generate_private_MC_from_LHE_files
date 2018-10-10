@@ -1,5 +1,9 @@
 #####################################################################################
 #!/bin/bash
+
+INFILE=$1
+FILETAG=`basename $INFILE .lhe`
+
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 export SCRAM_ARCH=slc6_amd64_gcc481
 if [ -r CMSSW_7_1_20/src ] ; then 
@@ -18,11 +22,14 @@ echo "Starting..............."
 echo
 date
 echo
-cmsRun TEMPLATE_LHE_GEN_SIM_cfg.py $1
+mv TEMPLATE_LHE_GEN_SIM_cfg.py TEMPLATE_"$FILETAG"_LHE_GEN_SIM_cfg.py
+cmsRun TEMPLATE_"$FILETAG"_LHE_GEN_SIM_cfg.py
 echo
 echo "Finished................"
 date
 echo
+
+#exit
 
 
 #####################################################################################
@@ -48,7 +55,8 @@ echo "Starting..............."
 echo
 date
 echo
-cmsRun TEMPLATE-RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py $1
+mv TEMPLATE-RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py TEMPLATE_"$FILETAG"_RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py
+cmsRun TEMPLATE_"$FILETAG"_RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py $1
 echo
 echo "Finished................"
 date
@@ -59,7 +67,8 @@ echo "Starting..............."
 echo
 date
 echo
-cmsRun TEMPLATE-RunIISummer16DR80Premix-RECO_cfg.py $1
+mv TEMPLATE-RunIISummer16DR80Premix-RECO_cfg.py cmsRun TEMPLATE_"FILETAG"_RunIISummer16DR80Premix-RECO_cfg.py
+cmsRun TEMPLATE_"FILETAG"_RunIISummer16DR80Premix-RECO_cfg.py $1
 echo
 echo "Finished................"
 date
@@ -70,7 +79,8 @@ echo "Starting..............."
 echo
 date
 echo
-cmsRun TEMPLATE-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py $1
+mv TEMPLATE-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py TEMPLATE_"$FILETAG"_RunIISummer16MiniAODv2-MINIAODSIM_cfg.py
+cmsRun TEMPLATE_"$FILETAG"_RunIISummer16MiniAODv2-MINIAODSIM_cfg.py
 echo
 echo "Finished................"
 date
@@ -79,9 +89,6 @@ echo
 
 
 #exit
-
-INFILE=$1
-FILETAG=`basename $INFILE .lhe`
 
 #####################################################################################
 # This directory has to already exist
@@ -92,9 +99,14 @@ xrdcp "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root root://cmseos.fnal.gov//
 
 #/eos/uscms/store/user/mbellis
 ### remove the output file if you don't want it automatically transferred when the job ends
-rm "$FILETAG"*.root
-rm "$FILETAG"*cfg.py
-#cd ${_CONDOR_SCRATCH_DIR}
+rm "$FILETAG"_GEN_SIM.root 
+rm "$FILETAG"-RunIISummer16DR80Premix-RECO.root 
+rm "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root 
+rm "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root 
+
+rm TEMPLATE_"$FILETAG"_*cfg.py
+
+##cd ${_CONDOR_SCRATCH_DIR}
 rm -rf CMSSW_7_1_20
 rm -rf CMSSW_8_0_21
 
