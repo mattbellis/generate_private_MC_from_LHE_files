@@ -92,9 +92,9 @@ xrdcp "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root root://cmseos.fnal.gov//
 
 #/eos/uscms/store/user/mbellis
 ### remove the output file if you don't want it automatically transferred when the job ends
-#rm "$FILETAG"*.root
-#rm "$FILETAG"*cfg.py
-##cd ${_CONDOR_SCRATCH_DIR}
-#rm -rf CMSSW_7_1_20
-#rm -rf CMSSW_8_0_21
+rm "$FILETAG"*.root
+rm "$FILETAG"*cfg.py
+#cd ${_CONDOR_SCRATCH_DIR}
+rm -rf CMSSW_7_1_20
+rm -rf CMSSW_8_0_21
 
