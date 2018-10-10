@@ -14,7 +14,15 @@ eval `scram runtime -sh`
 scram b
 cd ../../
 
+echo "Starting..............."
+echo
+date
+echo
 cmsRun TEMPLATE_LHE_GEN_SIM_cfg.py $1
+echo
+echo "Finished................"
+date
+echo
 
 
 #####################################################################################
@@ -36,13 +44,44 @@ scram b
 cd ../../
 
 
+echo "Starting..............."
+echo
+date
+echo
 cmsRun TEMPLATE-RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py $1
+echo
+echo "Finished................"
+date
+echo
+
+
+echo "Starting..............."
+echo
+date
+echo
 cmsRun TEMPLATE-RunIISummer16DR80Premix-RECO_cfg.py $1
+echo
+echo "Finished................"
+date
+echo
+
+
+echo "Starting..............."
+echo
+date
+echo
 cmsRun TEMPLATE-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py $1
+echo
+echo "Finished................"
+date
+echo
 
 
 
-exit
+#exit
+
+INFILE=$1
+FILETAG=`basename $INFILE .lhe`
 
 #####################################################################################
 # This directory has to already exist
@@ -56,6 +95,6 @@ xrdcp "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root root://cmseos.fnal.gov//
 rm "$FILETAG"*.root
 rm "$FILETAG"*cfg.py
 #cd ${_CONDOR_SCRATCH_DIR}
-#rm -rf CMSSW_7_1_20
-#rm -rf CMSSW_8_0_21
+rm -rf CMSSW_7_1_20
+rm -rf CMSSW_8_0_21
 
