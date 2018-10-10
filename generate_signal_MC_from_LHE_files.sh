@@ -60,7 +60,7 @@ cd ../../
 cp $GENERATOR_FRAGMENT CMSSW_7_1_20/src/Configuration/GenProduction/python/.
 
 # ADDED ,SIM to --step, 10/4/2018
-#cmsDriver.py Configuration/GenProduction/python/"$GENERATOR_FRAGMENT"  --filein file:"$INFILE" --filetype=LHE --fileout file:"$FILETAG"_GEN_SIM.root --mc --eventcontent RAWSIM --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM --conditions MCRUN2_71_V1::All --beamspot Realistic50ns13TeVCollision --step GEN,SIM --magField 38T_PostLS1 --python_filename "$FILETAG"_LHE_GEN_SIM_cfg.py --no_exec -n -1
+cmsDriver.py Configuration/GenProduction/python/"$GENERATOR_FRAGMENT"  --filein file:"$INFILE" --filetype=LHE --fileout file:"$FILETAG"_GEN_SIM.root --mc --eventcontent RAWSIM --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM --conditions MCRUN2_71_V1::All --beamspot Realistic50ns13TeVCollision --step GEN,SIM --magField 38T_PostLS1 --python_filename "$FILETAG"_LHE_GEN_SIM_cfg.py --no_exec -n -1
 
 #cmsRun "$FILETAG"_LHE_GEN_SIM_cfg.py
 
@@ -99,7 +99,7 @@ echo "---------------------------------------------------------"
 echo "          Starting Step 1                                "
 echo "---------------------------------------------------------"
 
-#cmsDriver.py step1 --filein "file:"$FILETAG"_GEN_SIM.root" --fileout file:"$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root  --pileup_input "dbs:/Neutrino_E-10_gun/RunIISpring15PrePremix-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v2-v2/GEN-SIM-DIGI-RAW" --mc --eventcontent PREMIXRAW --datatier GEN-SIM-RAW --conditions 80X_mcRun2_asymptotic_2016_TrancheIV_v6 --step DIGIPREMIX_S2,DATAMIX,L1,DIGI2RAW,HLT:@frozen2016 --nThreads 4 --datamix PreMix --era Run2_2016 --python_filename "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1 # || exit $? ; 
+cmsDriver.py step1 --filein "file:"$FILETAG"_GEN_SIM.root" --fileout file:"$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root  --pileup_input "dbs:/Neutrino_E-10_gun/RunIISpring15PrePremix-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v2-v2/GEN-SIM-DIGI-RAW" --mc --eventcontent PREMIXRAW --datatier GEN-SIM-RAW --conditions 80X_mcRun2_asymptotic_2016_TrancheIV_v6 --step DIGIPREMIX_S2,DATAMIX,L1,DIGI2RAW,HLT:@frozen2016 --nThreads 4 --datamix PreMix --era Run2_2016 --python_filename "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1 # || exit $? ; 
 
 #echo "Dump output"
 #echo
@@ -119,9 +119,9 @@ echo "---------------------------------------------------------"
 echo "          Starting Step 2                                "
 echo "---------------------------------------------------------"
 
-#cmsDriver.py step2 --filein file:"$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root --fileout file:"$FILETAG"-RunIISummer16DR80Premix-RECO.root --mc --eventcontent AODSIM --runUnscheduled --datatier AODSIM --conditions 80X_mcRun2_asymptotic_2016_TrancheIV_v6 --step RAW2DIGI,RECO,EI --nThreads 4 --era Run2_2016 --python_filename "$FILETAG"-RunIISummer16DR80Premix-RECO_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1 # || exit $? ; 
+cmsDriver.py step2 --filein file:"$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root --fileout file:"$FILETAG"-RunIISummer16DR80Premix-RECO.root --mc --eventcontent AODSIM --runUnscheduled --datatier AODSIM --conditions 80X_mcRun2_asymptotic_2016_TrancheIV_v6 --step RAW2DIGI,RECO,EI --nThreads 4 --era Run2_2016 --python_filename "$FILETAG"-RunIISummer16DR80Premix-RECO_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1 # || exit $? ; 
 
-cmsRun "$FILETAG"-RunIISummer16DR80Premix-RECO_cfg.py
+#cmsRun "$FILETAG"-RunIISummer16DR80Premix-RECO_cfg.py
 
 
 #####################################################################################
@@ -133,9 +133,9 @@ echo "---------------------------------------------------------"
 echo "          Starting Step 3                                "
 echo "---------------------------------------------------------"
 
-#cmsDriver.py step1 --filein "file:"$FILETAG"-RunIISummer16DR80Premix-RECO.root" --fileout file:"$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root --mc --eventcontent MINIAODSIM --runUnscheduled --datatier MINIAODSIM --conditions 80X_mcRun2_asymptotic_2016_TrancheIV_v6 --step PAT --nThreads 4 --era Run2_2016 --python_filename "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1 #|| exit $? ; 
+cmsDriver.py step1 --filein "file:"$FILETAG"-RunIISummer16DR80Premix-RECO.root" --fileout file:"$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root --mc --eventcontent MINIAODSIM --runUnscheduled --datatier MINIAODSIM --conditions 80X_mcRun2_asymptotic_2016_TrancheIV_v6 --step PAT --nThreads 4 --era Run2_2016 --python_filename "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1 #|| exit $? ; 
 
-cmsRun "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py
+#cmsRun "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py
 
 ls -ltr
 
@@ -153,9 +153,9 @@ echo xrdcp "$FILETAG".root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
 
 #/eos/uscms/store/user/mbellis
 ### remove the output file if you don't want it automatically transferred when the job ends
-rm "$FILETAG"*.root
-rm "$FILETAG"*cfg.py
+#rm "$FILETAG"*.root
+#rm "$FILETAG"*cfg.py
 #cd ${_CONDOR_SCRATCH_DIR}
-rm -rf CMSSW_7_1_20
-rm -rf CMSSW_8_0_21
+#rm -rf CMSSW_7_1_20
+#rm -rf CMSSW_8_0_21
 

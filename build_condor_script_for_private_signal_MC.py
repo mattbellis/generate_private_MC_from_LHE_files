@@ -18,6 +18,7 @@ cmd += "Transfer_Input_Files = run_the_cmsRun_commands.sh, TEMPLATE_LHE_GEN_SIM_
 cmd += "Output = condor_log_files/bellis_%s_$(Cluster)_$(Process).stdout\n" % (infile.split('.lhe')[0])
 cmd += "Error = condor_log_files/bellis_%s_$(Cluster)_$(Process).stderr\n" % (infile.split('.lhe')[0])
 cmd += "Log = condor_log_files/bellis_%s_$(Cluster)_$(Process).log\n" % (infile.split('.lhe')[0])
+cmd += "request_memory = 3200\n" # The premix stage uses about 3 GB of memory.
 cmd += "notify_user = mbellis@FNAL.GOV\n"
 cmd += "x509userproxy = /tmp/x509up_u47418 \n"
 cmd += "Arguments = %s " % (infile)
