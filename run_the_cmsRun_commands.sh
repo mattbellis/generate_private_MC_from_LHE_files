@@ -18,7 +18,7 @@ eval `scram runtime -sh`
 scram b
 cd ../../
 
-echo "Starting..............."
+echo "Starting LHE processing stage .............."
 echo
 date
 echo
@@ -29,7 +29,7 @@ echo "Finished................"
 date
 echo
 
-#exit
+exit
 
 
 #####################################################################################
@@ -62,7 +62,7 @@ echo "Finished................"
 date
 echo
 
-exit
+#exit
 
 
 echo "Starting RECO stage..............."
@@ -94,10 +94,10 @@ echo
 
 #####################################################################################
 # This directory has to already exist
-#xrdcp "$FILETAG"_GEN_SIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
-#xrdcp "$FILETAG"-RunIISummer16DR80Premix-RECO.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
-#xrdcp "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
-xrdcp "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
+xrdcp "$FILETAG"_GEN_SIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+xrdcp "$FILETAG"-RunIISummer16DR80Premix-RECO.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+xrdcp "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+xrdcp "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
 
 #/eos/uscms/store/user/mbellis
 ### remove the output file if you don't want it automatically transferred when the job ends
