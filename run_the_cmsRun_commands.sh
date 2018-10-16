@@ -29,7 +29,7 @@ echo "Finished................"
 date
 echo
 
-exit
+#exit
 
 
 #####################################################################################
@@ -94,9 +94,9 @@ echo
 
 #####################################################################################
 # This directory has to already exist
-xrdcp "$FILETAG"_GEN_SIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
-xrdcp "$FILETAG"-RunIISummer16DR80Premix-RECO.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
-xrdcp "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+#xrdcp "$FILETAG"_GEN_SIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+#xrdcp "$FILETAG"-RunIISummer16DR80Premix-RECO.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+#xrdcp "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
 xrdcp "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
 
 #/eos/uscms/store/user/mbellis
