@@ -18,12 +18,12 @@ eval `scram runtime -sh`
 scram b
 cd ../../
 
-echo "Starting..............."
+echo "Starting LHE processing stage .............."
 echo
 date
 echo
-mv TEMPLATE_LHE_GEN_SIM_cfg.py TEMPLATE_"$FILETAG"_LHE_GEN_SIM_cfg.py
-cmsRun TEMPLATE_"$FILETAG"_LHE_GEN_SIM_cfg.py
+#cp TEMPLATE_LHE_GEN_SIM_cfg.py TEMPLATE_"$FILETAG"_LHE_GEN_SIM_cfg.py
+cmsRun TEMPLATE_LHE_GEN_SIM_cfg.py $INFILE
 echo
 echo "Finished................"
 date
@@ -51,36 +51,38 @@ scram b
 cd ../../
 
 
-echo "Starting..............."
+echo "Starting PREMIX stage..............."
 echo
 date
 echo
-mv TEMPLATE-RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py TEMPLATE_"$FILETAG"_RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py
-cmsRun TEMPLATE_"$FILETAG"_RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py $1
+#cp TEMPLATE-RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py TEMPLATE_"$FILETAG"_RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py
+cmsRun TEMPLATE-RunIISummer16DR80Premix-DIGIPREMIXRAW_cfg.py $INFILE
+echo
+echo "Finished................"
+date
+echo
+
+#exit
+
+
+echo "Starting RECO stage..............."
+echo
+date
+echo
+#cp TEMPLATE-RunIISummer16DR80Premix-RECO_cfg.py TEMPLATE_"$FILETAG"_RunIISummer16DR80Premix-RECO_cfg.py
+cmsRun TEMPLATE-RunIISummer16DR80Premix-RECO_cfg.py $INFILE
 echo
 echo "Finished................"
 date
 echo
 
 
-echo "Starting..............."
+echo "Starting MINIAOD stage..............."
 echo
 date
 echo
-mv TEMPLATE-RunIISummer16DR80Premix-RECO_cfg.py cmsRun TEMPLATE_"FILETAG"_RunIISummer16DR80Premix-RECO_cfg.py
-cmsRun TEMPLATE_"FILETAG"_RunIISummer16DR80Premix-RECO_cfg.py $1
-echo
-echo "Finished................"
-date
-echo
-
-
-echo "Starting..............."
-echo
-date
-echo
-mv TEMPLATE-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py TEMPLATE_"$FILETAG"_RunIISummer16MiniAODv2-MINIAODSIM_cfg.py
-cmsRun TEMPLATE_"$FILETAG"_RunIISummer16MiniAODv2-MINIAODSIM_cfg.py
+#cp TEMPLATE-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py TEMPLATE_"$FILETAG"_RunIISummer16MiniAODv2-MINIAODSIM_cfg.py
+cmsRun TEMPLATE-RunIISummer16MiniAODv2-MINIAODSIM_cfg.py $INFILE
 echo
 echo "Finished................"
 date
@@ -92,10 +94,10 @@ echo
 
 #####################################################################################
 # This directory has to already exist
-#xrdcp "$FILETAG"_GEN_SIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
-#xrdcp "$FILETAG"-RunIISummer16DR80Premix-RECO.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
-#xrdcp "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
-xrdcp "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/.
+#xrdcp "$FILETAG"_GEN_SIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+#xrdcp "$FILETAG"-RunIISummer16DR80Premix-RECO.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+#xrdcp "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
+xrdcp "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root root://cmseos.fnal.gov//store/user/mbellis/signalMC/bnv_ttbar_t2mubc/.
 
 #/eos/uscms/store/user/mbellis
 ### remove the output file if you don't want it automatically transferred when the job ends
@@ -104,7 +106,7 @@ rm "$FILETAG"-RunIISummer16DR80Premix-RECO.root
 rm "$FILETAG"-RunIISummer16DR80Premix-DIGIPREMIXRAW.root 
 rm "$FILETAG"-RunIISummer16MiniAODv2-MINIAODSIM.root 
 
-rm TEMPLATE_"$FILETAG"_*cfg.py
+#rm TEMPLATE_"$FILETAG"_*cfg.py
 
 ##cd ${_CONDOR_SCRATCH_DIR}
 rm -rf CMSSW_7_1_20
