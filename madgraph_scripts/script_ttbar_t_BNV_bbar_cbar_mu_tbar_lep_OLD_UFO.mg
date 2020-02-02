@@ -1,4 +1,4 @@
-import model bnv-ufo
+import model ./bnv-ufo
 define ell+ = e+ mu+ ta+
 define ell- = e- mu- ta-
 define vl = ve vm vt
