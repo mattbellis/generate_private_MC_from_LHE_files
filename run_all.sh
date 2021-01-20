@@ -13,7 +13,8 @@ if [ ! -d $copydir ]; then
     mkdir $copydir
 fi
 
-scripts=("madgraph_scripts/script_ttbar_tbar2Wb_W2lnu.mg" "madgraph_scripts/script_ttbar_tbar2Wb_W2jj.mg"  "madgraph_scripts/script_ttbar_t2Wb_W2lnu.mg"  "madgraph_scripts/script_ttbar_t2Wb_W2jj.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_cbar_mu_tbar_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_cbar_mu_tbar_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_had_OLD_UFO.mg")
+scripts=("madgraph_scripts/script_ttbar_tbar2Wb_W2lnu.mg" "madgraph_scripts/script_ttbar_tbar2Wb_W2jj.mg"  "madgraph_scripts/script_ttbar_t2Wb_W2lnu.mg"  "madgraph_scripts/script_ttbar_t2Wb_W2jj.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_cbar_mu_tbar_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_cbar_mu_tbar_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_u_e_t_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_u_e_t_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_ubar_e_tbar_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_ubar_e_tbar_lep_OLD_UFO.mg")
+#scripts=("madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_had_OLD_UFO.mg")
 
 #PROC_ttbar_tbar2Wb_W2lnu/Events/run_01/
 
