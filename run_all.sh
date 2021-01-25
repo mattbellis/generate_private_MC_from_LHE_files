@@ -8,7 +8,9 @@
 #time ./bin/mg5 madgraph_scripts/script_ttbar_t2Wb_W2lnu.mg
 #time ./bin/mg5 madgraph_scripts/script_ttbar_t2Wb_W2jj.mg
 
-copydir="$HOME/OUTPUT_LHE_FILES"
+#copydir="$HOME/OUTPUT_LHE_FILES"
+# On LXPLUS
+copydir="../OUTPUT_LHE_FILES"
 if [ ! -d $copydir ]; then
     mkdir $copydir
 fi
@@ -25,7 +27,7 @@ do
     tag=${pretag%.mg}
     echo $tag
 
-    time ./bin/mg5 $script
+    time ./bin/mg5_aMC $script
 
     for rundir in '_01' '_02' '_03' '_04' '_05' '_06' '_07' '_08'
     do
