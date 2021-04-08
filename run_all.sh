@@ -21,14 +21,15 @@
 #Nevents['2016'] =    '100k'
 #Nevents['2016APB'] = '100k'
 
-topcopydir="$HOME/OUTPUT_LHE_FILES"
+#topcopydir="$HOME/OUTPUT_LHE_FILES"
 # On LXPLUS
-#topcopydir="../OUTPUT_LHE_FILES"
+topcopydir="../../public/OUTPUT_LHE_FILES"
 if [ ! -d $topcopydir ]; then
     mkdir $topcopydir
 fi
 
 scripts=("madgraph_scripts/script_ttbar_tbar2Wb_W2lnu.mg" "madgraph_scripts/script_ttbar_tbar2Wb_W2jj.mg"  "madgraph_scripts/script_ttbar_t2Wb_W2lnu.mg"  "madgraph_scripts/script_ttbar_t2Wb_W2jj.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_cbar_mu_tbar_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_cbar_mu_tbar_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_u_e_t_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_u_e_t_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_ubar_e_tbar_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_ubar_e_tbar_lep_OLD_UFO.mg")
+
 #scripts=("madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_had_OLD_UFO.mg")
 #scripts=("madgraph_scripts/script_ttbar_tbar2Wb_W2lnu.mg" )
 
@@ -37,7 +38,8 @@ scripts=("madgraph_scripts/script_ttbar_tbar2Wb_W2lnu.mg" "madgraph_scripts/scri
 ################################################################################
 for script in ${scripts[@]}
 do
-    for campaign in '2018' '2017' '2016' '2016APV'
+    #for campaign in '2018' '2017' '2016' '2016APV'
+    for campaign in '2016APV'
     do
         echo 
 
@@ -63,15 +65,15 @@ do
         # Set the number of events
         #####################################################
         Nevents='1k'
-        #if [ $campaign == '2018' ]; then
-            #Nevents='200k'
-        #elif [ $campaign == '2017' ]; then
-            #Nevents='150k'
-        #elif [ $campaign == '2016' ]; then
-            #Nevents='75k'
-        #elif [ $campaign == '2016APV' ]; then
-            #Nevents='75k'
-        #fi
+        if [ $campaign == '2018' ]; then
+            Nevents='200k'
+        elif [ $campaign == '2017' ]; then
+            Nevents='150k'
+        elif [ $campaign == '2016' ]; then
+            Nevents='75k'
+        elif [ $campaign == '2016APV' ]; then
+            Nevents='75k'
+        fi
 
         # Edit the number of events to be generated
         sed -i "s/set nevents.*/set nevents $Nevents/" $script
