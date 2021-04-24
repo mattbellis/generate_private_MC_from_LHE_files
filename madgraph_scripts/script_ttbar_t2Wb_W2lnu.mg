@@ -1,6 +1,6 @@
 define ell+ = e+ mu+ ta+
 define ell- = e- mu- ta-
-generate p p > t~ t, (t > w+ b, w+ > ell+ vl)
+generate p p > t~ t, (t > w+ b, w+ > ell+ vl),(t~ > W- b~, W- > j j)
 output PROC_ttbar_t2Wb_W2lnu
 y
 

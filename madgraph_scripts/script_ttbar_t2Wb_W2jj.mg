@@ -1,4 +1,4 @@
-generate p p > t~ t, (t > W+ b, W+ > j j)
+generate p p > t~ t, (t > W+ b, W+ > j j),(t~ > W- b~, W- > j j)
 output PROC_ttbar_t2Wb_W2jj
 y
 launch PROC_ttbar_t2Wb_W2jj

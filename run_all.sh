@@ -21,6 +21,11 @@
 #Nevents['2016'] =    '100k'
 #Nevents['2016APB'] = '100k'
 
+
+# Need these to get the systematics in there with lhapdf
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/afs/cern.ch/user/m/mbellis/workspace/SIGNAL_MC/MG5_aMC_v2_6_7/HEPTools/lhapdf6/lib
+export PYTHONPATH=$PYTHONPATH:/afs/cern.ch/user/m/mbellis/workspace/SIGNAL_MC/MG5_aMC_v2_6_7/HEPTools/lhapdf6/bin
+
 #topcopydir="$HOME/OUTPUT_LHE_FILES"
 # On LXPLUS
 topcopydir="../../public/OUTPUT_LHE_FILES"
@@ -29,6 +34,11 @@ if [ ! -d $topcopydir ]; then
 fi
 
 scripts=("madgraph_scripts/script_ttbar_tbar2Wb_W2lnu.mg" "madgraph_scripts/script_ttbar_tbar2Wb_W2jj.mg"  "madgraph_scripts/script_ttbar_t2Wb_W2lnu.mg"  "madgraph_scripts/script_ttbar_t2Wb_W2jj.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_cbar_mu_tbar_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_cbar_mu_tbar_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_u_e_t_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_tbar_BNV_b_u_e_t_lep_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_ubar_e_tbar_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_ubar_e_tbar_lep_OLD_UFO.mg")
+
+#scripts=("madgraph_scripts/script_ttbar_t2Wb_W2jj.mg" )
+
+#scripts=("madgraph_scripts/script_ttbar_tbar2Wb_W2lnu.mg" )
+#scripts=("madgraph_scripts/script_ttbar_t_BNV_bbar_ubar_e_tbar_had_OLD_UFO.mg" "madgraph_scripts/script_ttbar_t_BNV_bbar_ubar_e_tbar_lep_OLD_UFO.mg")
 
 #scripts=("madgraph_scripts/script_ttbar_tbar_BNV_b_c_mu_t_had_OLD_UFO.mg")
 #scripts=("madgraph_scripts/script_ttbar_tbar2Wb_W2lnu.mg" )
@@ -105,15 +115,17 @@ do
                 ls $outdir
             fi
      
-            if [ -e $lhefile_gz ]; then
-                echo gunzip $lhefile_gz
-                gunzip $lhefile_gz
-            fi
+            # Don't gunzip it
+            #if [ -e $lhefile_gz ]; then
+                #echo gunzip $lhefile_gz
+                #gunzip $lhefile_gz
+            #fi
     
-            if [ -e $lhefile ]; then
-                copyfile=$copydir"/"$tag"$rundir"".lhe"
-                echo cp $lhefile $copyfile
-                cp $lhefile $copyfile
+            if [ -e $lhefile_gz ]; then
+                #copyfile=$copydir"/"$tag"$rundir"".lhe"
+                copyfile=$copydir"/"$tag"$rundir"".lhe.gz"
+                echo cp $lhefile_gz $copyfile
+                cp $lhefile_gz $copyfile
             fi
             echo
         done
